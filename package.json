@@ -1,0 +1,9 @@
+{
+    "name": "technobase/watchdog",
+    "description": "Laravel package for sending error notifications to Telegram channels",
+    "keywords": ["laravel", "telegram", "error-tracking", "notifications"],
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+    }
+}
