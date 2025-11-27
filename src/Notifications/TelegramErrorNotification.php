@@ -28,7 +28,9 @@ class TelegramErrorNotification extends Notification implements ShouldQueue
     public int $timeout = 30;
 
     private string $title;
+
     private string $message;
+
     private array $context;
 
     /**
@@ -45,9 +47,9 @@ class TelegramErrorNotification extends Notification implements ShouldQueue
         if ($queueConnection) {
             $this->onConnection($queueConnection);
         }
-        
+
         // If queue is disabled, set connection to 'sync' to force immediate execution
-        if (!config('alert.queue', true)) {
+        if (! config('alert.queue', true)) {
             $this->onConnection('sync');
         }
     }
@@ -69,25 +71,25 @@ class TelegramErrorNotification extends Notification implements ShouldQueue
         $content .= "**Message**: {$this->message}\n\n";
 
         // Add context details
-        if (!empty($this->context['file'])) {
+        if (! empty($this->context['file'])) {
             $content .= "**File**: `{$this->context['file']}:{$this->context['line']}`\n";
         }
 
-        if (!empty($this->context['url'])) {
+        if (! empty($this->context['url'])) {
             $content .= "**URL**: `{$this->context['url']}`\n";
         }
 
-        if (!empty($this->context['user_id'])) {
+        if (! empty($this->context['user_id'])) {
             $content .= "**User**: `ID: {$this->context['user_id']}`\n";
         }
 
         // Add environment info
-        if (!empty($this->context['environment'])) {
+        if (! empty($this->context['environment'])) {
             $content .= "**Environment**: `{$this->context['environment']}`\n";
         }
 
         // Add truncated stack trace
-        if (!empty($this->context['trace'])) {
+        if (! empty($this->context['trace'])) {
             $trace = $this->context['trace'];
             $traceLines = explode("\n", $trace);
             $maxLines = config('alert.trace_lines', 10);
@@ -95,6 +97,7 @@ class TelegramErrorNotification extends Notification implements ShouldQueue
 
             $content .= "\n**Trace**:\n```\n{$truncatedTrace}\n```";
         }
+
         return TelegramMessage::create()
             ->content($content)
             ->token(config('alert.bot_token', ''))

@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Notification;
-use Technobase\Alert\Notifications\TestTelegramNotification;
 use Technobase\Alert\Notifications\TelegramErrorNotification;
+use Technobase\Alert\Notifications\TestTelegramNotification;
 
 test('can send test telegram notification', function () {
     Notification::fake();
@@ -17,16 +17,16 @@ test('can send test telegram notification', function () {
 });
 
 test('test notification has correct channel', function () {
-    $notification = new TestTelegramNotification();
+    $notification = new TestTelegramNotification;
 
-    expect($notification->via(new stdClass()))->toContain('telegram');
+    expect($notification->via(new stdClass))->toContain('telegram');
 });
 
 test('test notification has correct content', function () {
     $message = 'Custom test message';
     $notification = new TestTelegramNotification($message);
 
-    $telegramMessage = $notification->toTelegram(new stdClass());
+    $telegramMessage = $notification->toTelegram(new stdClass);
 
     expect($telegramMessage)->toBeInstanceOf(\NotificationChannels\Telegram\TelegramMessage::class);
 });
@@ -38,7 +38,7 @@ test('error notification has correct channel', function () {
         ['file' => 'test.php', 'line' => 42]
     );
 
-    expect($notification->via(new stdClass()))->toContain('telegram');
+    expect($notification->via(new stdClass))->toContain('telegram');
 });
 
 test('error notification includes title and message', function () {
@@ -46,7 +46,7 @@ test('error notification includes title and message', function () {
     $message = 'Database connection failed';
 
     $notification = new TelegramErrorNotification($title, $message);
-    $telegramMessage = $notification->toTelegram(new stdClass());
+    $telegramMessage = $notification->toTelegram(new stdClass);
 
     expect($telegramMessage)->toBeInstanceOf(\NotificationChannels\Telegram\TelegramMessage::class);
 });
@@ -67,7 +67,7 @@ test('error notification includes context information', function () {
         $context
     );
 
-    $telegramMessage = $notification->toTelegram(new stdClass());
+    $telegramMessage = $notification->toTelegram(new stdClass);
 
     expect($telegramMessage)->toBeInstanceOf(\NotificationChannels\Telegram\TelegramMessage::class);
 });

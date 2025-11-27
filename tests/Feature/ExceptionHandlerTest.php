@@ -53,7 +53,7 @@ test('exception handler includes correct context in notification', function () {
     Notification::assertSentTo(
         Notification::route('telegram', config('alert.chat_id')),
         TelegramErrorNotification::class,
-        function ($notification) use ($exception) {
+        function ($notification) {
             // We can't access private properties directly, but we can verify it was sent
             return true;
         }
