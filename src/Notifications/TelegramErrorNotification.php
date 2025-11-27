@@ -67,9 +67,9 @@ class TelegramErrorNotification extends Notification
 
             $content .= "\n**Trace**:\n```\n{$truncatedTrace}\n```";
         }
-
         return TelegramMessage::create()
             ->content($content)
+            ->token(config('watchdog.bot_token', ''))
             ->options(['parse_mode' => 'Markdown']);
     }
 }
