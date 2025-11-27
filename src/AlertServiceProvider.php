@@ -80,6 +80,7 @@ class AlertServiceProvider extends ServiceProvider
                     if (config('alert.queue', true)) {
                         $notifiable->notify($notification);
                     } else {
+                        // Send synchronously - notifyNow bypasses the queue
                         $notifiable->notifyNow($notification);
                     }
                 } catch (Throwable $notificationError) {

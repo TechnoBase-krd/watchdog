@@ -38,6 +38,11 @@ class TestTelegramNotification extends Notification implements ShouldQueue
         if ($queueConnection) {
             $this->onConnection($queueConnection);
         }
+
+        // If queue is disabled, set connection to 'sync' to force immediate execution
+        if (!config('alert.queue', true)) {
+            $this->onConnection('sync');
+        }
     }
 
     /**
