@@ -19,13 +19,13 @@
             "email": "dev@technobase.com"
         }
     ],
-    "require": {
-        "php": "^8.2",
-        "illuminate/notifications": "^11.0",
-        "illuminate/support": "^11.0",
-        "laravel-notification-channels/telegram": "^5.0"
-    },
-    "require-dev": {
+  "require": {
+    "php": "^8.2",
+    "illuminate/notifications": "^11.0|^12.0",
+    "illuminate/support": "^11.0|^12.0",
+    "laravel-notification-channels/telegram": "^5.0|^6.0"
+  },
+  "require-dev": {
         "orchestra/testbench": "^9.0",
         "phpunit/phpunit": "^11.0",
         "mockery/mockery": "^1.6"
