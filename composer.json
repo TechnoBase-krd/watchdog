@@ -26,12 +26,13 @@
     "laravel-notification-channels/telegram": "^5.0|^6.0"
   },
   "require-dev": {
+        "larastan/larastan": "^3.0",
+        "laravel/pint": "^1.26",
+        "mockery/mockery": "^1.6",
         "orchestra/testbench": "^9.0 || ^10.0",
         "pestphp/pest": "^3.0",
         "pestphp/pest-plugin-laravel": "^3.0",
-        "phpstan/phpstan": "^2.0",
-        "larastan/larastan": "^3.0",
-        "mockery/mockery": "^1.6"
+        "phpstan/phpstan": "^2.0"
     },
     "autoload": {
         "psr-4": {
