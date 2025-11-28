@@ -22,7 +22,7 @@ jobs:
           coverage: none
 
       - name: Install composer dependencies (including dev)
-        run: composer install --no-interaction --prefer-dist --with-all-dependencies
+        run: composer install --no-interaction --prefer-dist
 
       - name: Run PHPStan
         run: ./vendor/bin/phpstan --error-format=github --memory-limit=512M
