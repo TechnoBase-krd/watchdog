@@ -16,7 +16,7 @@ class AlertServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->mergeConfigFrom(
-            __DIR__ . '/../config/alert.php',
+            __DIR__.'/../config/alert.php',
             'alert'
         );
     }
@@ -29,7 +29,7 @@ class AlertServiceProvider extends ServiceProvider
         // Publish config file
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__ . '/../config/alert.php' => config_path('alert.php'),
+                __DIR__.'/../config/alert.php' => config_path('alert.php'),
             ], 'alert-config');
         }
 
